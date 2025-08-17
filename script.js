@@ -12,7 +12,7 @@ const percentualElem = document.getElementById("percentual");
 let acertos = 0;
 let erros = 0;
 
-let sorte = 05;
+let sorte = 50;
 
 function girarRoletas() {
     let giro = 0;
@@ -59,3 +59,4 @@ function girarRoletas() {
 }
 
 girarBtn.addEventListener("click", girarRoletas);
+
