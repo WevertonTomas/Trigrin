@@ -12,9 +12,12 @@ const percentualElem = document.getElementById("percentual");
 let acertos = 0;
 let erros = 0;
 
+
+let sorte = 100; 
 function girarRoletas() {
     let giro = 0;
-    resultado.textContent = "";
+
+    resultado.style.display = "none";
 
     const intervalo = setInterval(() => {
         const s1 = simbolos[Math.floor(Math.random() * simbolos.length)];
@@ -29,17 +32,25 @@ function girarRoletas() {
         if (giro > 15) {
             clearInterval(intervalo);
 
-            if (s1 === s2 && s2 === s3) {
-                resultado.textContent = "🎉Parabéns, você é o campeão!🎉";
+            const chance = Math.random() * 100; // 0 a 100
+            let vitoria = chance <= sorte;
+
+            if (vitoria) {
+                const simboloEscolhido = simbolos[Math.floor(Math.random() * simbolos.length)];
+                r1.textContent = simboloEscolhido;
+                r2.textContent = simboloEscolhido;
+                r3.textContent = simboloEscolhido;
+                resultado.textContent = "🎉 Parabéns, você é o campeão! 🎉";
                 acertos++;
             } else {
-                resultado.textContent = "😢Não foi dessa vez, tente novamente!😢";
+                resultado.textContent = "😢 Não foi dessa vez, tente novamente!";
                 erros++;
             }
 
+            resultado.style.display = "block";
+
             acertosElem.textContent = `Acertos: ${acertos}`;
             errosElem.textContent = `Erros: ${erros}`;
-
             const total = acertos + erros;
             const porcentagem = ((acertos / total) * 100).toFixed(1);
             percentualElem.textContent = `Percentual de acertos: ${porcentagem}%`;
