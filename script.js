@@ -12,14 +12,16 @@ const percentualElem = document.getElementById("percentual");
 let acertos = 0;
 let erros = 0;
 
+let sorte = 05;
 
-let sorte = 5; 
 function girarRoletas() {
     let giro = 0;
+
 
     resultado.style.display = "none";
 
     const intervalo = setInterval(() => {
+
         const s1 = simbolos[Math.floor(Math.random() * simbolos.length)];
         const s2 = simbolos[Math.floor(Math.random() * simbolos.length)];
         const s3 = simbolos[Math.floor(Math.random() * simbolos.length)];
@@ -31,8 +33,7 @@ function girarRoletas() {
         giro++;
         if (giro > 15) {
             clearInterval(intervalo);
-
-            const chance = Math.random() * 100; // 0 a 100
+            const chance = Math.random() * 100; 
             let vitoria = chance <= sorte;
 
             if (vitoria) {
@@ -48,7 +49,6 @@ function girarRoletas() {
             }
 
             resultado.style.display = "block";
-
             acertosElem.textContent = `Acertos: ${acertos}`;
             errosElem.textContent = `Erros: ${erros}`;
             const total = acertos + erros;
@@ -59,6 +59,3 @@ function girarRoletas() {
 }
 
 girarBtn.addEventListener("click", girarRoletas);
-
-
-
