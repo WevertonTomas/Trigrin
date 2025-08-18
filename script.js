@@ -13,7 +13,7 @@ let acertos = 0;
 let erros = 0;
 
 
-let sorte = 50;
+let sorte = 75;
 
 function girarRoletas() {
     let giro = 0;
@@ -60,3 +60,4 @@ function girarRoletas() {
 }
 
 girarBtn.addEventListener("click", girarRoletas);
+
